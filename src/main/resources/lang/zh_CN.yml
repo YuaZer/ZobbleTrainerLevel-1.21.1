@@ -1,0 +1,8 @@
+reload-message: "&a重载成功！"
+add-level-message: "&a成功添加了 &e{value} &a等级！"
+set-level-message: "&a成功设置 &e{player} &a的等级为 &e{value} &a！"
+add-exp-message: "&a成功添加了 &e{value} &a经验！"
+set-exp-message: "&a成功设置 &e{player} &a的经验为 &e{value} &a！"
+reduce-exp-message: "&a成功减少 &e{value} &a经验！"
+reduce-level-message: "&a成功减少 &e{value} &a等级！"
+error-args: "&c参数错误！"

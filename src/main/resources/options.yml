@@ -1,0 +1,27 @@
+Level:
+  #距离下一级所需要的经验值
+  formula: "Math.pow((%level% + 1),2) * 100"
+  #最大等级
+  maxLevel: 200
+#野外战胜宝可梦事件
+BeatWild:
+  #默认经验值
+  default: "%pokemon_level% * 0.1"
+  #特殊情况
+  special:
+    击杀闪光阿勃梭鲁:
+      conditions:
+        - "'%pokemon_name%' == 'Absol'"
+        - "'%pokemon_isShiny%' == 'true'"
+      #提供的训练师经验值
+      exp: "%pokemon_level% * 0.2"
+LevelUp:
+  #默认经验值
+  default: "%pokemon_level% * 0.1"
+  #特殊情况
+  special:
+    闪光阿勃梭鲁升级:
+      conditions:
+        - "'%pokemon_name%' == 'Absol'"
+        - "'%pokemon_isShiny%' == 'true'"
+      exp: "%pokemon_level% * 0.2"
