@@ -23,6 +23,8 @@ import taboolib.platform.BukkitPlugin
     lateinit var options: ConfigFile
     @Config("level.yml")
     lateinit var levelConfig: ConfigFile
+    @Config("reward.yml")
+    lateinit var rewardConfig: ConfigFile
 
     val LEVEL_CACHE: LevelContainerCache by lazy {
         LevelContainerCache().apply {

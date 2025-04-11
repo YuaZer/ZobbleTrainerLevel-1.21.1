@@ -18,6 +18,7 @@ object MainCommands {
         execute<CommandSender> { sender, context, argument ->
             ZobbleTrainerLevel.config.reload()
             ZobbleTrainerLevel.options.reload()
+            ZobbleTrainerLevel.rewardConfig.reload()
             sender.sendLang("reload-message")
         }
     }
@@ -32,8 +33,10 @@ object MainCommands {
             val name = sender.name
             val level = LevelApi.getPlayerLevelContainer(name).level
             val exp = LevelApi.getPlayerLevelContainer(name).experience
+            val expToNextLevel = LevelApi.getPlayerLevelContainer(name).getExperienceForNextLevel()
             sender.sendMessage("Level:$level")
             sender.sendMessage("Exp:$exp")
+            sender.sendMessage("ExpToNextLevel:$expToNextLevel")
         }
     }
     @CommandBody(permission = "zobbletrainerlevel.add")
@@ -112,12 +115,14 @@ object MainCommands {
                             when (type.lowercase()) {
                                 "level" -> {
                                     LevelApi.getPlayerLevelContainer(it.name).level = value
-                                    it.sendMessage(it.asLangText("set-level-message").replace("{value}",value.toString()))
+                                    it.sendMessage(it.asLangText("set-level-message").replace("{value}",value.toString())
+                                        .replace("{player}",player.name))
                                 }
 
                                 "exp" -> {
                                     LevelApi.getPlayerLevelContainer(it.name).updateExperience(value)
-                                    it.sendMessage(it.asLangText("set-exp-message").replace("{value}",value.toString()))
+                                    it.sendMessage(it.asLangText("set-exp-message").replace("{value}",value.toString())
+                                        .replace("{player}",player.name))
 
                                 }
 
@@ -138,12 +143,14 @@ object MainCommands {
                         when (type.lowercase()) {
                             "level" -> {
                                 LevelApi.getPlayerLevelContainer(sender.name).level = value
-                                it.sendMessage(it.asLangText("set-level-message").replace("{value}",value.toString()))
+                                it.sendMessage(it.asLangText("set-level-message").replace("{value}",value.toString())
+                                    .replace("{player}",it.name))
                             }
 
                             "exp" -> {
                                 LevelApi.getPlayerLevelContainer(sender.name).updateExperience(value)
-                                it.sendMessage(it.asLangText("set-exp-message").replace("{value}",value.toString()))
+                                it.sendMessage(it.asLangText("set-exp-message").replace("{value}",value.toString())
+                                    .replace("{player}",it.name))
                             }
 
                             else -> it.sendLang("error-args")

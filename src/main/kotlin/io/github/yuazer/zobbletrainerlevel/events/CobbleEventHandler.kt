@@ -2,14 +2,15 @@ package io.github.yuazer.zobbletrainerlevel.events
 
 import com.cobblemon.mod.common.api.battles.model.actor.ActorType
 import com.cobblemon.mod.common.api.events.CobblemonEvents
-import com.cobblemon.mod.common.api.events.battles.BattleEvent
+import com.cobblemon.mod.common.api.events.battles.BattleStartedPreEvent
 import com.cobblemon.mod.common.api.events.battles.BattleVictoryEvent
 import com.cobblemon.mod.common.api.events.pokemon.LevelUpEvent
+import com.cobblemon.mod.common.api.events.pokemon.PokemonCapturedEvent
 import io.github.yuazer.zobbletrainerlevel.ZobbleTrainerLevel
 import io.github.yuazer.zobbletrainerlevel.api.LevelApi
 import io.github.yuazer.zobbletrainerlevel.utils.ScriptUtils
 import org.bukkit.Bukkit
-import taboolib.platform.BukkitPlugin
+import taboolib.platform.util.asLangText
 
 object CobbleEventHandler {
 
@@ -25,10 +26,67 @@ object CobbleEventHandler {
                 onBeatWild(event)
             }
         }
+        CobblemonEvents.BATTLE_STARTED_PRE.subscribe { event ->
+            onBattleStartPre(event)
+        }
+        CobblemonEvents.POKEMON_CAPTURED.subscribe { event ->
+            onCapture(event)
+        }
+    }
+
+    fun onCapture(event: PokemonCapturedEvent) {
+        val pokemon = event.pokemon
+        val player = Bukkit.getPlayer(pokemon.getOwnerUUID() ?: return)
+        player?.let {
+            val specialSection = ZobbleTrainerLevel.options.getConfigurationSection("Capture.special")
+            if (specialSection != null) {
+                for (special in specialSection.getKeys(false)) {
+                    val conditions =
+                        ZobbleTrainerLevel.options.getStringList("Capture.special.$special.conditions")
+                    if (ScriptUtils.evalListToBoolean(conditions, pokemon)) {
+                        val experience = ScriptUtils.evalToInt(
+                            ZobbleTrainerLevel.options.getString("Capture.special.$special.exp")!!,
+                            pokemon
+                        )
+                        LevelApi.getPlayerLevelContainer(player.name).addExperience(experience)
+                        println("玩家${player.name} 获得经验 $experience")
+                        return@let
+                    }
+                }
+            }
+            // 如果没有触发任何特殊条件，则给予默认经验
+            val defaultExp = ZobbleTrainerLevel.options.getString("Capture.default")
+            if (defaultExp != null) {
+                val experience = ScriptUtils.evalToInt(defaultExp, pokemon)
+                LevelApi.getPlayerLevelContainer(player.name).addExperience(experience)
+            }
+        }
+    }
+
+    fun onBattleStartPre(event: BattleStartedPreEvent) {
+        val players = event.battle.actors
+            .filter { it.type == ActorType.PLAYER }
+        playersLoop@ for (player in players) {
+            val pokemonList = player.pokemonList
+            val pokemon = player.pokemonList.firstOrNull() ?: continue@playersLoop
+            val bukkitPlayer =
+                Bukkit.getPlayer(pokemon.originalPokemon.getOwnerUUID() ?: continue@playersLoop) ?: continue@playersLoop
+            println("开始检查玩家${bukkitPlayer.name}")
+            val canBattle =
+                pokemonList.all { it.originalPokemon.level <= LevelApi.getPlayerLevelContainer(bukkitPlayer.name).level }
+            if (!canBattle) {
+                bukkitPlayer.sendMessage(
+                    bukkitPlayer.asLangText("pokemon-high-level")
+                        .replace("%pokemon%", pokemon.getName().string)
+                )
+                event.cancel()
+                return
+            }
+        }
     }
 
     fun onBeatWild(event: BattleVictoryEvent) {
-        loop@for (winner in event.winners) {
+        loop@ for (winner in event.winners) {
             val battlePokemon = winner.activePokemon[0].battlePokemon ?: continue@loop
             val pokemon = battlePokemon.originalPokemon
             val ownerUUID = pokemon.getOwnerUUID() ?: continue@loop
@@ -58,8 +116,6 @@ object CobbleEventHandler {
             }
         }
     }
-
-
 
 
     fun onLevelUp(event: LevelUpEvent) {

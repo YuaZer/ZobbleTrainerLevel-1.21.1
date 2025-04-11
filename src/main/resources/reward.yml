@@ -1,0 +1,6 @@
+#等级奖励
+LevelReward:
+  15:
+    - tell "§7[§a§l!§7] §a恭喜你升到15级"
+    - tell "§7[§a§l!§7] §a这是给你的奖励哦"
+    - command inline "give {{ sender }} DIAMOND 1" as console

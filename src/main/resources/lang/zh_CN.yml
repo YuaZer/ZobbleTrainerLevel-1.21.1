@@ -6,3 +6,5 @@ set-exp-message: "&a成功设置 &e{player} &a的经验为 &e{value} &a！"
 reduce-exp-message: "&a成功减少 &e{value} &a经验！"
 reduce-level-message: "&a成功减少 &e{value} &a等级！"
 error-args: "&c参数错误！"
+
+pokemon-high-level: "&c您的%pokemon%等级太高!无法使用!"

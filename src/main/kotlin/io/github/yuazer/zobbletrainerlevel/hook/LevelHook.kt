@@ -13,7 +13,7 @@ object LevelHook :PlaceholderExpansion{
             when (args.lowercase()) {
                 "level" -> data.level.toString()
                 "exp" -> data.experience.toString()
-                "expToNextLevel" -> data.getExperienceForNextLevel().toString()
+                "exptonextlevel" -> data.getExperienceForNextLevel().toString()
                 else -> "argsError"
             }
         } ?: "playernull"

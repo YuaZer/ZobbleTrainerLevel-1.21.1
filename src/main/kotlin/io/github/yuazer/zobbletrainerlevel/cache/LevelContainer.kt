@@ -21,7 +21,15 @@ class LevelContainer(
 
     // 增加等级
     fun addLevel(amount: Int) {
-        this.level += amount
+        val player = Bukkit.getPlayer(playerName)
+        if (player != null) {
+            for (i in this.level..this.level+amount){
+                val event = TrainerLevelUpEvent(player, i)
+                event.call()
+                if (event.isCancelled) return
+                this.level = event.level
+            }
+        }
     }
 
     // 设置经验

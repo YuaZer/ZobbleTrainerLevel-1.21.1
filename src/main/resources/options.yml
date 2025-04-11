@@ -25,3 +25,13 @@ LevelUp:
         - "'%pokemon_name%' == 'Absol'"
         - "'%pokemon_isShiny%' == 'true'"
       exp: "%pokemon_level% * 0.2"
+Capture:
+  #默认经验值
+  default: "%pokemon_level% * 0.1"
+  #特殊情况
+  special:
+    闪光阿勃梭鲁捕捉:
+      conditions:
+        - "'%pokemon_name%' == 'Absol'"
+        - "'%pokemon_isShiny%' == 'true'"
+      exp: "%pokemon_level% * 0.2"

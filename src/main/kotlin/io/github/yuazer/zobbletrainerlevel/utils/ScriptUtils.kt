@@ -22,8 +22,6 @@ object ScriptUtils {
 
 
     fun evalToInt(expression: String, pokemon: Pokemon): Int {
-        val exp = evalToInt(expression, pokemonPapiToMap(pokemon))
-        println("获得的经验:$exp")
         return evalToInt(expression, pokemonPapiToMap(pokemon))
     }
 
@@ -63,7 +61,7 @@ object ScriptUtils {
 
     fun pokemonPapiToMap(pokemon: Pokemon): Map<String, Any> {
         val map = mutableMapOf<String, Any>()
-        map["%pokemon_name%"] = pokemon.getDisplayName().string
+        map["%pokemon_name%"] = pokemon.species.name
         map["%pokemon_level%"] = pokemon.level
         map["%pokemon_exp%"] = pokemon.experience
         map["%pokemon_exp_to_next_level%"] = pokemon.getExperienceToNextLevel()
