@@ -1,5 +1,9 @@
 package io.github.yuazer.zobbletrainerlevel.utils
 
+import com.cobblemon.mod.common.api.pokemon.PokemonProperties
+import com.cobblemon.mod.common.command.argument.PokemonPropertiesArgumentType
+import com.cobblemon.mod.common.util.getPlayer
+import com.mojang.brigadier.StringReader
 import org.bukkit.entity.Player
 import taboolib.common.platform.function.adaptCommandSender
 import taboolib.module.kether.KetherShell
@@ -22,5 +26,12 @@ object PlayerUtils {
 
     fun replaceInList(strings: List<String>, oldChar: String, newChar: String): List<String> {
         return strings.map { it.replace(oldChar, newChar) }
+    }
+    fun parseArgs(context: String): PokemonProperties {
+        val parse = PokemonPropertiesArgumentType.properties().parse(StringReader(context))
+        return parse
+    }
+    fun createPokemon(context: String,player: Player){
+        parseArgs(context).create(player.uniqueId.getPlayer())
     }
 }

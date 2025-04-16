@@ -26,9 +26,12 @@ class LevelContainer(
             for (i in this.level..this.level+amount){
                 val event = TrainerLevelUpEvent(player, i)
                 event.call()
-                if (event.isCancelled) return
+                if (event.isCancelled) {
+                    return
+                }
                 this.level = event.level
             }
+            LevelApi.getLevelCache().put(playerName, this)
         }
     }
 

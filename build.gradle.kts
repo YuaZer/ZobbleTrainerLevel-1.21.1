@@ -30,11 +30,13 @@ taboolib {
         install(CommandHelper)
 
     }
-
     description {
         name = "ZobbleTrainerLevel"
         contributors {
             name("YuaZer")
+        }
+        dependencies{
+            name("PlaceholderAPI").optional(true)
         }
     }
     version { taboolib = "6.2.3"

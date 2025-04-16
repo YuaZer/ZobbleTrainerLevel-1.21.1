@@ -8,3 +8,4 @@ reduce-level-message: "&a成功减少 &e{value} &a等级！"
 error-args: "&c参数错误！"
 
 pokemon-high-level: "&c您的%pokemon%等级太高!无法使用!"
+max-level-message: "&c您的等级将达到上限!"
