@@ -71,10 +71,10 @@ object CobbleEventHandler {
             val pokemon = player.pokemonList.firstOrNull() ?: continue@playersLoop
             val bukkitPlayer =
                 Bukkit.getPlayer(pokemon.originalPokemon.getOwnerUUID() ?: continue@playersLoop) ?: continue@playersLoop
-            println("开始检查玩家${bukkitPlayer.name}")
             val canBattle =
                 pokemonList.all { it.originalPokemon.level <= LevelApi.getPlayerLevelContainer(bukkitPlayer.name).level }
-            if (!canBattle) {
+            val noLevelNoBattle = ZobbleTrainerLevel.options.getBoolean("NoLevel_NoBattle")
+            if (noLevelNoBattle && !canBattle) {
                 bukkitPlayer.sendMessage(
                     bukkitPlayer.asLangText("pokemon-high-level")
                         .replace("%pokemon%", pokemon.getName().string)
