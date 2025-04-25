@@ -108,15 +108,15 @@ dependencies {
     modCompileOnly("com.cobblemon:fabric:1.6.1+1.21.1")
     // To change the versions see the gradle.properties file
     minecraft("com.mojang:minecraft:${project.property("minecraft_version")}")
-    mappings("net.fabricmc:yarn:${project.property("yarn_mappings")}:v2")
-//    mappings(loom.officialMojangMappings())
+//    mappings("net.fabricmc:yarn:${project.property("yarn_mappings")}:v2")
+    mappings(loom.officialMojangMappings())
     modCompileOnly("net.fabricmc:fabric-loader:${project.property("loader_version")}")
     modCompileOnly("net.fabricmc:fabric-language-kotlin:${project.property("kotlin_loader_version")}")
 
     modCompileOnly("net.fabricmc.fabric-api:fabric-api:${project.property("fabric_version")}")
     //第三方库
-    implementation("ink.ptms.core:v12004:12004:mapped")
-    implementation("ink.ptms.core:v12004:12004:universal")
+    implementation("ink.ptms.core:v12101:12101:mapped")
+    implementation("ink.ptms.core:v12101:12101:universal")
     compileOnly(kotlin("stdlib"))
     compileOnly(fileTree("libs"))
     taboo("top.maplex.arim:Arim:1.2.14")

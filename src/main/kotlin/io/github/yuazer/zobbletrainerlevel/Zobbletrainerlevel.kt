@@ -1,14 +1,8 @@
 package io.github.yuazer.zobbletrainerlevel
 
-import com.cobblemon.mod.common.util.server
 import io.github.yuazer.zobbletrainerlevel.cache.LevelContainerCache
 import io.github.yuazer.zobbletrainerlevel.events.CobbleEventHandler
-import net.minecraft.server.MinecraftServer
-import org.bukkit.craftbukkit.v1_20_R3.inventory.CraftItemStack
-import org.bukkit.inventory.ItemStack
 import taboolib.common.LifeCycle
-import taboolib.common.env.RuntimeDependencies
-import taboolib.common.env.RuntimeDependency
 import taboolib.common.platform.Awake
 import taboolib.common.platform.Plugin
 import taboolib.common.platform.function.info
@@ -29,15 +23,11 @@ object ZobbleTrainerLevel : Plugin() {
     @Config("reward.yml")
     lateinit var rewardConfig: ConfigFile
 
-    //    val LEVEL_CACHE: LevelContainerCache by lazy {
-//        LevelContainerCache().apply {
-//            loadAll()
-//        }
-//    }
-    val LEVEL_CACHE: LevelContainerCache = LevelContainerCache().apply {
-        loadAll()
+    val LEVEL_CACHE: LevelContainerCache by lazy {
+        LevelContainerCache().apply {
+            loadAll()
+        }
     }
-    lateinit var server: MinecraftServer
     override fun onEnable() {
 
     }
