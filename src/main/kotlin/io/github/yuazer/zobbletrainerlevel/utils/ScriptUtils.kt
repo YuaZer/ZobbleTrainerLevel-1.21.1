@@ -41,10 +41,10 @@ object ScriptUtils {
             val result = Arim.evaluator.evaluate(parsedExpression, arimVars)
             result as? Boolean ?: false
         } catch (e: Exception) {
-            throw RuntimeException("布尔表达式计算失败: \"$expression\"\n替换后: \"$parsedExpression\"\n变量: $arimVars", e)
+            println("布尔表达式计算失败: \"$expression\"\n替换后: \"$parsedExpression\"\n变量: $arimVars")
+            false
         }
     }
-
 
 
     fun evalToBoolean(expression: String, pokemon: Pokemon): Boolean {
@@ -61,7 +61,7 @@ object ScriptUtils {
 
     fun pokemonPapiToMap(pokemon: Pokemon): Map<String, Any> {
         val map = mutableMapOf<String, Any>()
-        map["%pokemon_name%"] = pokemon.species.name
+        map["%pokemon_name%"] = pokemon.species.name.replace(" ","#")
         map["%pokemon_level%"] = pokemon.level
         map["%pokemon_exp%"] = pokemon.experience
         map["%pokemon_exp_to_next_level%"] = pokemon.getExperienceToNextLevel()

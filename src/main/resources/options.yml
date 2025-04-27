@@ -3,6 +3,9 @@ Level:
   formula: "Math.pow((%level% + 1),2) * 100"
   #最大等级
   maxLevel: 200
+#注意事项
+#使用%pokemon_name%变量的时候，插件会自动把宝可梦名中的空格改为#
+#所以应该这样使用: - "'%pokemon_name%' == 'Tapu Koko'"
 #野外战胜宝可梦事件
 BeatWild:
   #默认经验值
