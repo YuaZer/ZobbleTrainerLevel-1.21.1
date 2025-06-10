@@ -14,6 +14,7 @@ object LevelHook :PlaceholderExpansion{
                 "level" -> data.level.toString()
                 "exp" -> data.experience.toString()
                 "exptonextlevel" -> data.getExperienceForNextLevel().toString()
+                "need" -> (data.getExperiencePercentageToLevelUp()-data.experience).toString()
                 else -> "argsError"
             }
         } ?: "playernull"

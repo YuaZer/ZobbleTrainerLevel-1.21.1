@@ -3,8 +3,6 @@ package io.github.yuazer.zobbletrainerlevel.utils
 import com.cobblemon.mod.common.api.pokemon.stats.Stats
 import com.cobblemon.mod.common.pokemon.Pokemon
 import top.maplex.arim.Arim
-import javax.script.ScriptEngineManager
-import javax.script.ScriptException
 import kotlin.math.roundToInt
 
 object ScriptUtils {
