@@ -3,3 +3,6 @@ Lang: "zh_CN"
 
 #是否开启 当背包有等级比自己训练师等级高的宝可梦，则禁止对战
 NoLevel_NoBattle: false
+
+#自动保存周期(单位/秒)
+save-interval: 300

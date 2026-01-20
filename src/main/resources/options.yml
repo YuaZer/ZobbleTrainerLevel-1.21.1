@@ -18,6 +18,7 @@ BeatWild:
         - "'%pokemon_isShiny%' == 'true'"
       #提供的训练师经验值
       exp: "%pokemon_level% * 0.2"
+#宝可梦升级
 LevelUp:
   #默认经验值
   default: "%pokemon_level% * 0.1"
@@ -28,6 +29,7 @@ LevelUp:
         - "'%pokemon_name%' == 'Absol'"
         - "'%pokemon_isShiny%' == 'true'"
       exp: "%pokemon_level% * 0.2"
+#捕捉宝可梦
 Capture:
   #默认经验值
   default: "%pokemon_level% * 0.1"
@@ -37,4 +39,36 @@ Capture:
       conditions:
         - "'%pokemon_name%' == 'Absol'"
         - "'%pokemon_isShiny%' == 'true'"
+      exp: "%pokemon_level% * 0.2"
+#获取宝可梦
+PokemonGained:
+  default: "%pokemon_level% * 0.05"
+  special:
+    eevee_gain:
+      conditions:
+        - "'%pokemon_name%' == 'Eevee'"
+      exp: "%pokemon_level% * 0.2"
+#发现宝可梦
+PokemonSeen:
+  default: "%pokemon_level% * 0.02"
+  special:
+    pikachu_seen:
+      conditions:
+        - "'%pokemon_name%' == 'Pikachu'"
+      exp: "%pokemon_level% * 0.1"
+#治疗宝可梦
+PokemonHealed:
+  default: "%pokemon_level% * 0.03"
+  special:
+    low_level_heal:
+      conditions:
+        - "%pokemon_level% <= 10"
+      exp: "%pokemon_level% * 0.1"
+#放出宝可梦
+PokemonReleased:
+  default: "%pokemon_level% * 0.02"
+  special:
+    rare_release:
+      conditions:
+        - "'%pokemon_name%' == 'Eevee'"
       exp: "%pokemon_level% * 0.2"

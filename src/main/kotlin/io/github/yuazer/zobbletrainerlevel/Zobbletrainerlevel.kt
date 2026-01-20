@@ -6,6 +6,7 @@ import taboolib.common.LifeCycle
 import taboolib.common.platform.Awake
 import taboolib.common.platform.Plugin
 import taboolib.common.platform.function.info
+import taboolib.common.platform.function.submitAsync
 import taboolib.module.configuration.Config
 import taboolib.module.configuration.ConfigFile
 import taboolib.platform.BukkitPlugin
@@ -35,6 +36,9 @@ object ZobbleTrainerLevel : Plugin() {
     @Awake(LifeCycle.ENABLE)
     fun loadPlugin() {
         CobbleEventHandler.registerCobbleEvent()
+        submitAsync(period = config.getInt("save-interval").toLong()*20L) {
+            LEVEL_CACHE.saveAll()
+        }
         logLoaded()
     }
 

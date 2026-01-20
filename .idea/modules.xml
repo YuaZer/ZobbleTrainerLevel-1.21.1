@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ZobbleTrainerLevel.client.iml" filepath="$PROJECT_DIR$/.idea/modules/ZobbleTrainerLevel.client.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ZobbleTrainerLevel.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ZobbleTrainerLevel.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ZobbleTrainerLevel.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ZobbleTrainerLevel.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.yuazer.zobbletrainerlevel.ZobbleTrainerLevel.client.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.yuazer.zobbletrainerlevel.ZobbleTrainerLevel.client.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.yuazer.zobbletrainerlevel.ZobbleTrainerLevel.main.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.yuazer.zobbletrainerlevel.ZobbleTrainerLevel.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/io.github.yuazer.zobbletrainerlevel.ZobbleTrainerLevel.test.iml" filepath="$PROJECT_DIR$/.idea/modules/io.github.yuazer.zobbletrainerlevel.ZobbleTrainerLevel.test.iml" />

@@ -3,4 +3,12 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="21" />
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ZobbleTrainerLevel" options="-AoutRefMapFile=D:\Minecraft\插件制作\插件开发空间\ZobbleTrainerLevel-1.21.1\build\classes\java\client\client-zobbletrainerlevel-1-21-1-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=D:\Minecraft\插件制作\插件开发空间\ZobbleTrainerLevel-1.21.1\build\loom-cache\mixin-map-loom.mappings.1_21_1.layered+hash.2198-v2.client.tiny -AinMapFileNamedIntermediary=E:\GradleTemp\.gradle\caches\fabric-loom\1.21.1\loom.mappings.1_21_1.layered+hash.2198-v2\mappings.tiny" />
+      <module name="io.github.yuazer.zobbletrainerlevel.ZobbleTrainerLevel.client" options="-AoutRefMapFile=D:\Minecraft\插件制作\插件开发空间\ZobbleTrainerLevel-1.21.1\build\classes\java\client\client-zobbletrainerlevel-1-21-1-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=D:\Minecraft\插件制作\插件开发空间\ZobbleTrainerLevel-1.21.1\build\loom-cache\mixin-map-loom.mappings.1_21_1.layered+hash.2198-v2.client.tiny -AinMapFileNamedIntermediary=E:\GradleTemp\.gradle\caches\fabric-loom\1.21.1\loom.mappings.1_21_1.layered+hash.2198-v2\mappings.tiny" />
+      <module name="io.github.yuazer.zobbletrainerlevel.ZobbleTrainerLevel.main" options="-AoutRefMapFile=D:\Minecraft\插件制作\插件开发空间\ZobbleTrainerLevel-1.21.1\build\classes\java\main\zobbletrainerlevel-1-21-1-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=D:\Minecraft\插件制作\插件开发空间\ZobbleTrainerLevel-1.21.1\build\loom-cache\mixin-map-loom.mappings.1_21_1.layered+hash.2198-v2.main.tiny -AinMapFileNamedIntermediary=E:\GradleTemp\.gradle\caches\fabric-loom\1.21.1\loom.mappings.1_21_1.layered+hash.2198-v2\mappings.tiny" />
+      <module name="io.github.yuazer.zobbletrainerlevel.ZobbleTrainerLevel.test" options="-AoutRefMapFile=D:\Minecraft\插件制作\插件开发空间\ZobbleTrainerLevel-1.21.1\build\classes\java\test\test-zobbletrainerlevel-1-21-1-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=D:\Minecraft\插件制作\插件开发空间\ZobbleTrainerLevel-1.21.1\build\loom-cache\mixin-map-loom.mappings.1_21_1.layered+hash.2198-v2.test.tiny -AinMapFileNamedIntermediary=E:\GradleTemp\.gradle\caches\fabric-loom\1.21.1\loom.mappings.1_21_1.layered+hash.2198-v2\mappings.tiny" />
+    </option>
+  </component>
 </project>

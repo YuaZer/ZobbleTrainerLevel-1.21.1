@@ -19,5 +19,4 @@ object LevelHook :PlaceholderExpansion{
             }
         } ?: "playernull"
     }
-
 }
